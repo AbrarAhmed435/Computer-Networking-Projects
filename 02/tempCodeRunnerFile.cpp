@@ -1,0 +1,1 @@
+test_switch_with_end_devices
