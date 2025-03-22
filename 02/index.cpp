@@ -93,8 +93,6 @@ class Hub{
 };
 
 
-
-// Switch class with MAC address learning functionality
 class Switch {
 public:
     vector<Hub*> connectedhubs;
@@ -176,7 +174,7 @@ public:
         cout << "Sensing channel..." << endl;
         if (sense_channel()) {
             cout << "Channel is busy. Waiting..." << endl;
-            sleep(3); //waiting for 2 seconds
+            sleep(3); //waiting for 3 seconds
             transmit(data); // Retry transmission
             return;
         }
@@ -286,7 +284,7 @@ class Bridge{
             destination_port=mac_table_Bridge[destination.mac_address];  // Return corresponding port
         } else {
             cout << "MAC address not found!" << endl;
-            return;  // Return -1 if MAC address is not found
+            return;  
         }
         cout<<"Destination mac address "<<destination.mac_address<<" is present at port "<<destination_port<<endl;
         receive_data(source,destination,data);
@@ -451,9 +449,9 @@ cout<<"Total Collision Domains: 10"<<endl;
 
 int main() {
     //bridge();
-    //testcase1();
+    testcase1();
    //testcase2();
-     SlidingWindow sw(3);
-    sw.simulate_transmission();
+     //SlidingWindow sw(3);
+    //sw.simulate_transmission();
 
 }

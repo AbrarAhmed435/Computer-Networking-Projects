@@ -31,7 +31,7 @@ public:
         }
     }
 
-    // Method to send data to a Hub (for star topology)
+    // function to send data to a Hub (for star topology)
     void sendDataToHub(const string& data, Hub* hub);
 
     // Method to receive data
@@ -46,13 +46,13 @@ class Hub {
 public:
     vector<EndDevice*> connectedDevices;
 
-    connecting an End Device to the Hub
+   // connecting an End Device to the Hub
     void connectDevice(EndDevice* device) {
         connectedDevices.push_back(device);
         cout << "Device " << device->deviceID << " connected to the hub." << endl;
     }
 
-    // Method to broadcast data to all connected devices
+    // function to broadcast data to all connected devices
     void broadcastData(const string& data, EndDevice* senderDevice) {
         cout << "Hub broadcasting data from Device " << senderDevice->deviceID << "." << endl;
         for (EndDevice* device : connectedDevices) {
@@ -73,7 +73,6 @@ void EndDevice::sendDataToHub(const string& data, Hub* hub) {
     }
 }
 
-// Main function to run the simulation
 int main() {
     // Test Case 1: Direct Connection between Device 1 and Device 2
     EndDevice device1(1);
@@ -88,7 +87,7 @@ int main() {
     device2.sendDataToDirectConnection("Hello Device 1 via Direct Connection");
 
     // Test Case 2: Star Topology with 5 Devices and 1 Hub
-    Hub hub1;  // Changed object name to hub1
+    Hub hub1;  
     EndDevice device3(3);
     EndDevice device4(4);
     EndDevice device5(5);
@@ -102,7 +101,7 @@ int main() {
 
     cout << "\nTest Case 2: Star Topology with 5 Devices and Hub" << endl;
     
-    // Enable communication from various devices to the hub1
+    // Enable communication from  devices to the hub1
     device1.sendDataToHub("Hello from Device 1 to all", &hub1);
     device2.sendDataToHub("Hi from Device 2", &hub1);
     device3.sendDataToHub("Greetings from Device 3", &hub1);
